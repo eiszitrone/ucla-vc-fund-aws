@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ucla</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-route.js"></script>
+    <script src="javascripts/app.js"></script>
+  </head>
+  <body ng-app="uclaApp">
+    <div class="container">
+      <h1 class="text-center">UCLA VC Fund</h1>
+      <br>
+      <div class="text-center">
+        <a class="btn btn-default" href="#/angellist" style="margin-right: 30px">Angellist</a>
+        <a class="btn btn-default" href="#/s1">S1 Filing</a>
+      </div>
+      <br>
+      <div ng-view>
+      </div>
+    </div>
+  </body>
+</html>

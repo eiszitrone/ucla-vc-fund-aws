@@ -1,0 +1,19 @@
+<p class="lead text-center">Newly added ucla related startups on AngelList in recent two weeks</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Logo</th>
+      <th>Name</th>
+      <th>Joined Date</th>
+      <th>Angellist URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="result in results">
+      <td><img ng-src="{{result.logo_url}}" class="user-pic"></td>
+      <td>{{result.name}}</td>
+      <td>{{result.created_at}}</td>
+      <td><a ng-href="{{result.angellist_url}}" target="_blank">{{result.angellist_url}}</a></td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,25 @@
+<p class="lead text-center">Query S-1 filings for either the month(mm/yyyy) OR year(yyyy)</p>
+<p class="lead text-center">To find UCLA related S-1 filings</p>
+<form class="form-inline">
+  <label for="dateInput">Date:</label>
+  <input type="text" ng-model="searchDate" id="dateInput" class="form-control">
+  <button class="btn btn-default" ng-click="search()">Search</button>
+  <button class="btn btn-default" ng-click="currentMonth()">current month</button>
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Name</th>
+      <th>url</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="result in results">
+      <td>{{result.date}}</td>
+      <td>{{result.name}}</td>
+      <td><a ng-href="{{result.url}}" target="_blank">{{result.url}}</a></td>
+    </tr>
+  </tbody>
+</table>
