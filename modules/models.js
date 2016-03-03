@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
-//mongoose.connect('mongodb://localhost:27017/angellist-crawler');
-mongoose.connect('mongodb://ec2-52-32-83-104.us-west-2.compute.amazonaws.com/angellist', {user: 'uclaVCfund1', pass: 'uclaVCfund'});
+mongoose.connect('mongodb://localhost:27017/angellist-crawler');
+//mongoose.connect('mongodb://ec2-52-32-83-104.us-west-2.compute.amazonaws.com/angellist', {user: 'uclaVCfund1', pass: 'uclaVCfund'});
 var db = mongoose.connection;
  db.on('error', console.error.bind(console, 'connection error:'));
  db.once('open', function (callback) {

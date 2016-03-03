@@ -113,4 +113,6 @@ function emptyDB() {
 }
 
 emptyDB();
-saveToDB('/home/bitnami/result.txt', 14);
+saveToDB('./result/result.txt', 14);
+
+// saveToDB('/home/bitnami/result.txt', 14);
