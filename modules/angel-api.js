@@ -6,12 +6,33 @@ var https = require('https');
 /*
 @slugs startup name in angellist
 */
-var getStartupById = function (id, callback) {
-  var searchOption = {
-    hostname: 'api.angel.co',
-    path: '/1/startups/' + id + '?access_token=' + access_token,
-    method: 'GET'
-  };
+var getStartupInfoById = function (id, flag, callback) {
+  //using angellist api to retrieve data
+  //flag = 1 retrieving info of the startup
+  //flag = 2 retrieving founder info of the startup
+  //flag = 3 retrieving investor info of the startup
+  var searchOption;
+  if (flag === 1) {
+    searchOption = {
+      hostname: 'api.angel.co',
+      path: '/1/startups/' + id + '?access_token=' + access_token,
+      method: 'GET'
+    };
+  }
+  else if (flag === 2) {
+      searchOption = {
+        hostname: 'api.angel.co',
+        path: '/1/startup_roles?v=1&startup_id=' + id + '&role=founder&access_token=' + access_token,
+        method: 'GET'
+    };
+  }
+  else if (flag === 3) {
+    searchOption = {
+      hostname: 'api.angel.co',
+      path: '/1/startup_roles?v=1&startup_id=' + id + '&role=past_investor&access_token=' + access_token,
+      method: 'GET'
+    };
+  }
 
   var searchReq = https.request(searchOption, function (searchRes) {
     var searchData = "";
@@ -32,4 +53,5 @@ var getStartupById = function (id, callback) {
       console.error(e);
   });
 };
-module.exports.getStartupById = getStartupById;
+
+module.exports.getStartupInfoById = getStartupInfoById;
