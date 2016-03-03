@@ -21,7 +21,19 @@ var startupSchema = new mongoose.Schema(
     "markets": [String],
     "created_at": String,
     "angellist_url" : String,
-    "logo_url" : String
+    "logo_url" : String,
+    "founders" : [{
+      "founderName": String,
+      "founderId": Number,
+      "founderAngelURL": String,
+      "founderBio": String
+    }],
+    "investors": [{
+      "investorName": String,
+      "investorId": Number,
+      "investorAngelURL": String,
+      "investorURL": String
+    }]
   }
 );
 
