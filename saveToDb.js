@@ -31,7 +31,7 @@ function saveToDB(file, ndays) {
             }
             //get founders
             var founders = [];
-            angelApi.getStartupInfoById(results[i], 2, function(founderInfo)) {
+            angelApi.getStartupInfoById(results[i], 2, function(founderInfo) {
               for (j = 0; j < founderInfo.startup_roles.length; ++j) {
                 founders.push(
                   {
@@ -42,10 +42,10 @@ function saveToDB(file, ndays) {
                   }
                 );
               }
-            }
+            });
             //get investers
             var investors = [];
-            angelApi.getStartupInfoById(results[i], 3, function(investorInfo)) {
+            angelApi.getStartupInfoById(results[i], 3, function(investorInfo) {
               for (j = 0; j < investorInfo.startup_roles.length; ++j) {
                 investors.push(
                   {
@@ -56,7 +56,7 @@ function saveToDB(file, ndays) {
                   }
                 );
               }
-            }
+            });
             var newStartup = new Startup(
               {
                 id: result.id,
