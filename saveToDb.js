@@ -30,8 +30,8 @@ function saveToDB(file, ndays) {
               locations.push(result.locations[j].display_name);
             }
             //get founders
-            var founders = [];
-            angelApi.getStartupInfoById(results[i], 2, function(founderInfo) {
+            angelApi.getStartupInfoById(result.id, 2, function(founderInfo)) {
+              var founders = [];
               for (j = 0; j < founderInfo.startup_roles.length; ++j) {
                 founders.push(
                   {
@@ -42,45 +42,45 @@ function saveToDB(file, ndays) {
                   }
                 );
               }
-            });
-            //get investers
-            var investors = [];
-            angelApi.getStartupInfoById(results[i], 3, function(investorInfo) {
-              for (j = 0; j < investorInfo.startup_roles.length; ++j) {
-                investors.push(
+              //get investers
+              angelApi.getStartupInfoById(result.id, 3, function(investorInfo)) {
+                var investors = [];
+                for (j = 0; j < investorInfo.startup_roles.length; ++j) {
+                  investors.push(
+                    {
+                      investorName: investorInfo.startup_roles[j].tagged.name,
+                      investorId:   investorInfo.startup_roles[j].tagged.id,
+                      investorAngelURL: investorInfo.startup_roles[j].tagged.angellist_url,
+                      investorURL:  investorInfo.startup_roles[j].company_url
+                    }
+                  );
+                }
+                var newStartup = new Startup(
                   {
-                    investorName: investorInfo.startup_roles[j].tagged.name,
-                    investorId:   investorInfo.startup_roles[j].tagged.id,
-                    investorAngelURL: investorInfo.startup_roles[j].tagged.angellist_url,
-                    investorURL:  investorInfo.startup_roles[j].company_url
+                    id: result.id,
+                    name: result.name,
+                    product_desc: result.product_desc,
+                    high_concept: result.high_concept,
+                    company_url: result.company_url,
+                    crunchbase_url: result.crunchbase_url,
+                    linkedin_url: result.crunchbase_url,
+                    company_size: result.company_size,
+                    location: locations,
+                    markets: markets,
+                    created_at: result.created_at,
+                    angellist_url: result.angellist_url,
+                    logo_url : result.logo_url,
+                    founders: founders,
+                    investors: investors
                   }
                 );
+                newStartup.save(function(err) {
+                  if (err) console.log("save error: " + err);
+                  count -= 1;
+                  disConnect(count);
+                });
               }
-            });
-            var newStartup = new Startup(
-              {
-                id: result.id,
-                name: result.name,
-                product_desc: result.product_desc,
-                high_concept: result.high_concept,
-                company_url: result.company_url,
-                crunchbase_url: result.crunchbase_url,
-                linkedin_url: result.crunchbase_url,
-                company_size: result.company_size,
-                location: locations,
-                markets: markets,
-                created_at: result.created_at,
-                angellist_url: result.angellist_url,
-                logo_url : result.logo_url,
-                founders: founders,
-                investors: investors
-              }
-            );
-            newStartup.save(function(err) {
-              if (err) console.log("save error: " + err);
-              count -= 1;
-              disConnect(count);
-            });
+            }
           }
           else {
             console.log("duplicated item");
