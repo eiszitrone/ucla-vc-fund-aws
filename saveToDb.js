@@ -9,7 +9,7 @@ function saveToDB(file, ndays) {
   results.pop();
   var count = results.length;
   for(var i = 0; i < results.length; ++i) {
-    angelApi.getStartupById(results[i], function(result) {
+    angelApi.getStartupInfoById(results[i], 1, function(result) {
       // only need startups joined within two weeks
       var diffDays = (new Date() - new Date(result.created_at)) / (1000 * 60 * 60 * 24);
 
@@ -29,6 +29,34 @@ function saveToDB(file, ndays) {
             for (j = 0; j < result.locations.length; ++j) {
               locations.push(result.locations[j].display_name);
             }
+            //get founders
+            var founders = [];
+            angelApi.getStartupInfoById(results[i], 2, function(founderInfo)) {
+              for (j = 0; j < founderInfo.startup_roles.length; ++j) {
+                founders.push(
+                  {
+                    founderName: founderInfo.startup_roles[j].tagged.name,
+                    founderId:   founderInfo.startup_roles[j].tagged.id,
+                    founderAngelURL: founderInfo.startup_roles[j].tagged.angellist_url,
+                    founderBio:  founderInfo.startup_roles[j].tagged.bio
+                  }
+                );
+              }
+            }
+            //get investers
+            var investors = [];
+            angelApi.getStartupInfoById(results[i], 3, function(investorInfo)) {
+              for (j = 0; j < investorInfo.startup_roles.length; ++j) {
+                investors.push(
+                  {
+                    investorName: investorInfo.startup_roles[j].tagged.name,
+                    investorId:   investorInfo.startup_roles[j].tagged.id,
+                    investorAngelURL: investorInfo.startup_roles[j].tagged.angellist_url,
+                    investorURL:  investorInfo.startup_roles[j].company_url
+                  }
+                );
+              }
+            }
             var newStartup = new Startup(
               {
                 id: result.id,
@@ -43,7 +71,9 @@ function saveToDB(file, ndays) {
                 markets: markets,
                 created_at: result.created_at,
                 angellist_url: result.angellist_url,
-                logo_url : result.logo_url
+                logo_url : result.logo_url,
+                founders: founders,
+                investors: investors
               }
             );
             newStartup.save(function(err) {
