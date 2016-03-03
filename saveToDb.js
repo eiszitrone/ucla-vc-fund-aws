@@ -17,10 +17,30 @@ function saveToDB(file, ndays) {
         Startup.findOne({"id": result.id}, function(err, user) {
           //user is not added yet
           if (user === null) {
+            var markets = [];
+            var locations = [];
+
+            //get the markets
+            for (var j = 0; j < result.markets.length; ++j) {
+              markets.push(result.markets[j].display_name);
+            }
+
+            //get the locations
+            for (j = 0; j < result.locations.length; ++j) {
+              locations.push(result.locations[j].display_name);
+            }
             var newStartup = new Startup(
               {
                 id: result.id,
                 name: result.name,
+                product_desc: result.product_desc,
+                high_concept: result.high_concept,
+                company_url: result.company_url,
+                crunchbase_url: result.crunchbase_url,
+                linkedin_url: result.crunchbase_url,
+                company_size: result.company_size,
+                location: locations,
+                markets: markets,
                 created_at: result.created_at,
                 angellist_url: result.angellist_url,
                 logo_url : result.logo_url
