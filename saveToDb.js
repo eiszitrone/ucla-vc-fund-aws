@@ -30,7 +30,7 @@ function saveToDB(file, ndays) {
               locations.push(result.locations[j].display_name);
             }
             //get founders
-            angelApi.getStartupInfoById(result.id, 2, function(founderInfo)) {
+            angelApi.getStartupInfoById(result.id, 2, function(founderInfo) {
               var founders = [];
               for (j = 0; j < founderInfo.startup_roles.length; ++j) {
                 founders.push(
@@ -43,7 +43,7 @@ function saveToDB(file, ndays) {
                 );
               }
               //get investers
-              angelApi.getStartupInfoById(result.id, 3, function(investorInfo)) {
+              angelApi.getStartupInfoById(result.id, 3, function(investorInfo) {
                 var investors = [];
                 for (j = 0; j < investorInfo.startup_roles.length; ++j) {
                   investors.push(
