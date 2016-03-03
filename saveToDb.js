@@ -79,8 +79,8 @@ function saveToDB(file, ndays) {
                   count -= 1;
                   disConnect(count);
                 });
-              }
-            }
+              });
+            });
           }
           else {
             console.log("duplicated item");
