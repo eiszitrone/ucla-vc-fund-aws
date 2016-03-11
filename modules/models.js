@@ -19,7 +19,7 @@ var startupSchema = new mongoose.Schema(
     "company_size": String,
     "location": [String],
     "markets": [String],
-    "created_at": String,
+    "created_at": Date,
     "angellist_url" : String,
     "logo_url" : String,
     "founders" : [{
