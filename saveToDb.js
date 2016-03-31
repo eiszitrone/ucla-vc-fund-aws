@@ -14,12 +14,6 @@ function saveToDB(file, lastDate) {
     console.log("useServiceAccount err: " + err);
     var data = fs.readFileSync(file).toString();
     var results = data.split(',');
-    results.pop();
-    results_set = new Set(results);
-    results = [];
-    for (var id of results_set) {
-      results.push(id);
-    }
 
     var count = results.length;
     console.log(count);
