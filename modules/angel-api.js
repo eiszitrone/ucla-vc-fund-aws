@@ -12,6 +12,8 @@ var getStartupInfoById = function (id, flag, callback) {
   //flag = 1 retrieving info of the startup
   //flag = 2 retrieving founder info of the startup
   //flag = 3 retrieving investor info of the startup
+
+  console.log(id);
   var searchOption;
   if (flag === 1) {
     searchOption = {

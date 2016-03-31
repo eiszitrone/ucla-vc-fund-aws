@@ -9,18 +9,18 @@ var my_sheet = new GoogleSpreadsheet('1QYPfi6RCTeq1SmQELpvzuMFemWOIJkI4gG63eKRLB
 
 var creds = require('./ucla-vc-fund1-a79372de14ea.json');
 
-function saveToDB(file, lastDate) {
+function saveToDB(file) {
   my_sheet.useServiceAccountAuth(creds, function(err){
     console.log("useServiceAccount err: " + err);
     var data = fs.readFileSync(file).toString();
     var results = data.split(',');
-
+    console.log(results);
     var count = results.length;
     console.log(count);
-    return;
     // for(var i = 0; i < results.length; ++i) {
     function process() {
       if (count === 0) {
+        console.log('finish processing!');
         return;
       }
       angelApi.getStartupInfoById(results[results.length - count], 1, function(result) {
@@ -111,7 +111,7 @@ function saveToDB(file, lastDate) {
                       Company_size: result.company_size,
                       Locations: locations.join(" | "),
                       Markets: markets.join(" | "),
-                      Created_at: created_date.toISOString(),
+                      Created_at: created_date.toISOString().substring(0, 10),
                       Angellist_url: result.angellist_url,
                       Founder1_name: null,
                       Founder1_AngelURL: null,
@@ -147,15 +147,16 @@ function saveToDB(file, lastDate) {
                     newRow.Investor2_URL = investors[1].investorURL;
                   }
                   //save to spreadsheet
-                  // my_sheet.useServiceAccountAuth(creds, function(err){
-
-                  	my_sheet.addRow(1, newRow, function(err) {
-                      console.log("addRow err  " + err);
-                      count -= 1;
-                      disConnect(count);
-                      process();
-                    });
-                  // })
+                  // console.log(newRow);
+                  if (newRow.Product_desc) {
+                    newRow.Product_desc = newRow.Product_desc.replace(/\x0b/g, '');
+                  }
+                	my_sheet.addRow(1, newRow, function(err) {
+                    console.log("addRow err  " + err);
+                    count -= 1;
+                    disConnect(count);
+                    process();
+                  });
                 });
               });
             }
@@ -194,9 +195,9 @@ function emptyDB() {
   });
 }
 
-emptyDB();
+// emptyDB();
 
-saveToDB('./result/result.txt', 14);
+saveToDB('./result/test.txt');
 // Startup.find({}).sort({created_at: -1}).limit(1).exec(function(err, doc) {
 //     // console.log(doc[0].created_at);
 //     saveToDB('./result/result.txt', doc[0].created_at);

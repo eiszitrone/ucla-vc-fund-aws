@@ -13,7 +13,7 @@
     <tr ng-repeat="result in results">
       <td><img ng-src="{{result.logo_url}}" class="user-pic"></td>
       <td>{{result.name}}</td>
-      <td>{{result.created_at}}</td>
+      <td>{{result.created_at.substring(0, 10)}}</td>
       <td><a ng-href="{{result.angellist_url}}" target="_blank">{{result.angellist_url}}</a></td>
     </tr>
   </tbody>
