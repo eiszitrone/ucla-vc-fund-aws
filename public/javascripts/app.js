@@ -10,13 +10,19 @@ app.controller('welcomeController', function ($scope, $http){
 });
 
 app.controller('angellistController', function ($scope, $http){
-    $http.get('/angellist')
-    .success(function (data) {
-        $scope.results = data;
-    })
-    .error(function () {
+    $scope.startDate = new Date("2010-01-01");
+    $scope.endDate = new Date();
+    // $scope.endDate = $scope.endDate.toISOString().substring(0, 10);
+    $scope.category = "test";
+    $scope.search = function() {
+      $http.get('/angellist', {params: { startDate: $scope.startDate, endDate: $scope.endDate, category: $scope.category}})
+      .success(function (data) {
+          $scope.results = data;
+      })
+      .error(function () {
 
-    });
+      });
+    };
 });
 
 app.controller('s1Controller', function ($scope, $http){

@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 
 // get angelist result
 router.get('/angellist', function(req, res, next) {
-  Startup.find(function(err, results) {
+  Startup.find({created_at: {$gte: req.query.startDate, $lt: req.query.endDate}, markets: new RegExp(req.query.category, 'i')}, function(err, results) {
     if(err) {
       res.send(500, err);
       console.log("error");

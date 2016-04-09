@@ -1,20 +1,29 @@
-<p class="lead text-center">Newly added ucla related startups on AngelList in recent two weeks</p>
-<a class= "lead text-center" href="https://docs.google.com/spreadsheets/d/1QYPfi6RCTeq1SmQELpvzuMFemWOIJkI4gG63eKRLBvk/edit#gid=0">google sheets</a>
+<!-- <a class= "lead text-center" href="https://docs.google.com/spreadsheets/d/1QYPfi6RCTeq1SmQELpvzuMFemWOIJkI4gG63eKRLBvk/edit#gid=0">google sheets</a> -->
+<form>
+  <span>StartDate</span>: <input type="date" ng-model="startDate"> &nbsp;&nbsp; &nbsp;
+  <span>EndDate</span>: <input type="date" ng-model="endDate"> &nbsp; &nbsp; &nbsp;
+  <span>Category</span>: <input type="text" ng-model="category">
+  <!-- <a class="btn btn-default" href="#/angellist" style="margin-right: 30px">search</a> -->
+  <button class="btn btn-default" ng-click="search()">Search</button>
+</form>
 <table class="table">
   <thead>
     <tr>
-      <th>Logo</th>
       <th>Name</th>
       <th>Joined Date</th>
-      <th>Angellist URL</th>
+      <th>Markets</th>
+      <th>Founders</th>
     </tr>
   </thead>
-  <tbody>
-    <tr ng-repeat="result in results">
-      <td><img ng-src="{{result.logo_url}}" class="user-pic"></td>
-      <td>{{result.name}}</td>
+  <tbody ng-repeat="result in results" style="border: 5px solid black; margin-bottom: 4px">
+    <tr >
+      <td><a href="{{result.angellist_url}}">{{result.name}}</a></td>
       <td>{{result.created_at.substring(0, 10)}}</td>
-      <td><a ng-href="{{result.angellist_url}}" target="_blank">{{result.angellist_url}}</a></td>
+      <td>{{result.markets.join(" | ")}}</td>
+      <td><span ng-repeat="founder in result.founders"><a ng-href="{{founder.founderAngelURL}}">{{founder.founderName}}</a> | <span></td>
+    </tr>
+    <tr ng-show="result.product_desc !== null && result.product_desc !== ''">
+      <td colspan="4">{{result.product_desc}}</td>
     </tr>
   </tbody>
 </table>
