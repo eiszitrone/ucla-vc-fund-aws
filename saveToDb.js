@@ -14,6 +14,9 @@ function saveToDB(file) {
     console.log("useServiceAccount err: " + err);
     var data = fs.readFileSync(file).toString();
     var results = data.split(',');
+    if (results[results.length - 1] === "") {
+      results.pop();
+    }
     console.log(results);
     var count = results.length;
     console.log(count);
@@ -197,7 +200,7 @@ function emptyDB() {
 
 // emptyDB();
 
-saveToDB('./result/test.txt');
+saveToDB('./result/result1.txt');
 // Startup.find({}).sort({created_at: -1}).limit(1).exec(function(err, doc) {
 //     // console.log(doc[0].created_at);
 //     saveToDB('./result/result.txt', doc[0].created_at);
