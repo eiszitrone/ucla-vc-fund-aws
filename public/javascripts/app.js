@@ -13,7 +13,7 @@ app.controller('angellistController', function ($scope, $http){
     $scope.startDate = new Date("2010-01-01");
     $scope.endDate = new Date();
     // $scope.endDate = $scope.endDate.toISOString().substring(0, 10);
-    $scope.category = "test";
+    $scope.category = "";
     $scope.search = function() {
       $http.get('/angellist', {params: { startDate: $scope.startDate, endDate: $scope.endDate, category: $scope.category}})
       .success(function (data) {
