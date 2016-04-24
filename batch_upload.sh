@@ -19,5 +19,5 @@ echo -n "," >> result/7.txt
 cd result
 cat 0.txt 1.txt 2.txt 3.txt 4.txt 5.txt 6.txt 7.txt > result1.txt
 cd ..
-scp -i uclaVCfund-angellist.pem result/result.txt ubuntu@52.32.83.104:~/.
+scp -i uclaVCfund-angellist.pem result/result1.txt ubuntu@52.32.83.104:~/.
 # ssh -i "uclaVCfund-angellist.pem" ubuntu@ec2-52-32-83-104.us-west-2.compute.amazonaws.com 'node /home/bitnami/apps/ucla-vc-fund-angellist/saveToDb.js'
