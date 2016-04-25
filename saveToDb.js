@@ -5,9 +5,12 @@ var fs = require("fs")
 
 var GoogleSpreadsheet = require("google-spreadsheet");
 // spreadsheet key is the long id in the sheets URL
-var my_sheet = new GoogleSpreadsheet('1QYPfi6RCTeq1SmQELpvzuMFemWOIJkI4gG63eKRLBvk');
+// var my_sheet = new GoogleSpreadsheet('1QYPfi6RCTeq1SmQELpvzuMFemWOIJkI4gG63eKRLBvk');
+var my_sheet = new GoogleSpreadsheet('1Ak6H4bPKPmmYFgX79GhIeMeWiZ5sNvRsmKdUv7fmkY4');
 
-var creds = require('./ucla-vc-fund1-a79372de14ea.json');
+// var creds = require('./ucla-vc-fund1-a79372de14ea.json');
+var creds = require('./ucla--vc-fund-web-app-35176ee5cf77.json');
+
 
 function saveToDB(file) {
   my_sheet.useServiceAccountAuth(creds, function(err){

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "ucla--vc-fund-web-app",
+  "private_key_id": "35176ee5cf77c24ac398a4c69cd55fad968829c2",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC4JEZ8xAOrf1rS\nq0OwBtYd/gGgTrGgy6QFXrjVxneHqa5xDCksthwSGp40nzQ8zbZxlfx9Cf8IsVnf\nPxQN2SBpoHdR/ht7/hvSLMlynsmeB4r0OqxQ+UoN1kc8S6jMDaW6nU8oC9LHPM9P\npNeqknl+9YR0GGMyd2a1lXdEg3qyYQzt4tKT2L9mMkwltLDnNU3WQphnVsx6sNfs\nkr/extyRrGY4lLzwSgx0uYSd9CRRevH9i6y9T1m7ockYwyC5zjpwfb3Vf73eFkEA\nnjuo7GAGL7h09LERj4zY9KrpXp8cpwVn/lUMglt12BQjIrjT/RWKWsyiKaQCbst3\nplCTUHqPAgMBAAECggEAC7VKwg4YiaP8W17GW//jR17qLY4zXxzznd/K8tS+ruKM\nE+YJDC28FS6aFpB02tTdn9VAi5bCH4RfSYGSPdsrY2vvikgU6Upb7H4qhN4xxZmH\nLUY5xKBFJCIWv2+0GN1ZR0dPTCWMTlzAdbjueYr8rKThuhv+2qua3TrWrYWKnKLR\nGsHNKB3R1G6cL5wCwslbMpuFygN+ty++XJV/nayOq5TxOuGc+jr58jvs6xfLkIXK\n25yybZJvPrq2oMaLcs9jaeNeKzNkriI4jheFKwks6eIN4wxC1iiEGVuo8/tV0BeP\nSogRPatN1kq4v0pSUEX4bOb5lYZPeYwPUmw6QL87OQKBgQD/5lGaxADVxLiZgHep\nBo4Cf6xRljmrnrMifruLcC2ofKlqXD1Rgw99zE09rXZx+NEFMPLXEjE2tt0CoSY+\nKbEGIOUEnUiAplP1FzOdFy31XJ+wKwMLqUfcu6F0pnnuL5KFw0+NksYX85FIeswl\nAsQARxIgyXkK3f+CRmHY+3SEAwKBgQC4NsFTtV3IcLr3IdERCziHHeZNW4Jzkg5y\nYh15abwEF70VD1ec1IEDL/TmPU1uAtEonLR6W/9uNIGa0XtT442OLGhe4AWbXYww\n++dgyvru7bI0VN7K6x13WzR5rXcqO/CY03ln9c0BH1TsVx3lrHekedBKQcAUc4e+\nv+LOKCP3hQKBgHIkGWIe6wBurqhJVRZfhhg3OnVpvG+AagaI4L5hWvw8HpUCb5dc\nDhzec9V++cX8Zb8bBjZINwtgpVP27Ufs8Lj7Eyvru9smVWyM3MjE/grjNZcumD0r\nVJJwXqPZXamQLprbczCCtzkXu0XJACXCBgrZqIxXUVY3jzBclGhkQKRhAoGAD16i\nKrXLKVoef1gW9XEWOk/IU1P7QmFBS1HcW7DyuvSwFf29tZwVV4q8yCj9ONyLTvQk\nKsFaQnunBJ/NxmYJ/X6/BotybFAVzlB2MaE95ol2gN9D53JOdxLpAe3zL1bo8BdU\n3dOoUxumHkH2gJ8vLE3tjwSFXi91d/jSl5jJx3ECgYB8sIUM3bJzI9+xJ7nGqARQ\ni8M2Ap3I3J9S6nOnsv1s/9eaz6WKMU09dq70l9zmM5yzUWNQ5H2MhSW7sUQiK8jJ\ni41J055/rNX3fDABPR/0QY/ENco8Dn/6TbweGhp9pE9NaXW/XGhJTy4aOHctngNg\n38YTb8chG49vhNAMyryJYA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "sheets@ucla--vc-fund-web-app.iam.gserviceaccount.com",
+  "client_id": "109643513702057323064",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sheets%40ucla--vc-fund-web-app.iam.gserviceaccount.com"
+}
